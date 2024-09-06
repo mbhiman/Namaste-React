@@ -1,0 +1,38 @@
+{
+  "name": "Namaste-React",
+  "version": "1.0.0",
+  "description": "This is namaste react with Bhiman",
+  "main": "App.js",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mbhiman/Namaste-React.git"
+  },
+  "keywords": [
+    "react",
+    "namaste",
+    "react",
+    "Bhiman"
+  ],
+  "author": "\"Bhiman Singha\"",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mbhiman/Namaste-React/issues"
+  },
+  "homepage": "https://github.com/mbhiman/Namaste-React#readme",
+  "devDependencies": {
+    "parcel": "^2.12.0",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "browsersList": [
+    "last 2 Chrome version"
+  ]
+}
