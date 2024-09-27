@@ -1,10 +1,5 @@
 import { CDN_URL } from "../utils/constants";
 const RestaurantCard = ({ resData }) => {
-  if (!resData || !resData.info) {
-    return (
-      <div className="res-card">Restaurant information is not available</div>
-    );
-  }
   const {
     name,
     areaName,

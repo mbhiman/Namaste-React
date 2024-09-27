@@ -1,8 +1,14 @@
 import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
+import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [listOfRestaurant, setlistOfRestaurant] = useState([]);
+  //const [filteredList, setfilteredList] = useState([]);
+  const [originalListOfRestaurant, setOriginalListOfRestaurant] = useState([]);
+
+  const [searchText, setSearchtext] = useState("");
 
   useEffect(() => {
     fetchData();
@@ -14,19 +20,59 @@ const Body = () => {
     );
 
     const json = await data.json();
-    console.log(json);
     setlistOfRestaurant(
       json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants
     );
+
+    setOriginalListOfRestaurant(
+      json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants
+    );
+
+    // setfilteredList(
+    //   json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants
+    // );
   };
+
+  if (listOfRestaurant.length === 0) {
+    return <Shimmer />;
+  }
+
+  /* listOfRestaurant.length === 0 ? (
+  <Shimmer />
+) : 
+*/
 
   return (
     <div className="body">
       <div className="filter">
+        <div className="search">
+          <input
+            type="text"
+            className="search-box"
+            value={searchText}
+            onChange={(event) => {
+              setSearchtext(event.target.value);
+            }}
+            placeholder="Search"
+          />
+          <button
+            className="search-button"
+            onClick={() => {
+              const filteredRestaurant = originalListOfRestaurant.filter(
+                (res) =>
+                  res.info.name.toLowerCase().includes(searchText.toLowerCase())
+              );
+              setlistOfRestaurant(filteredRestaurant);
+            }}
+          >
+            Search
+          </button>
+        </div>
+
         <button
           className="filter-btn"
           onClick={() => {
-            const filteredList = listOfRestaurant.filter(
+            const filteredList = originalListOfRestaurant.filter(
               (res) => res.info.avgRating > 4.2
             );
             setlistOfRestaurant(filteredList);
@@ -37,7 +83,9 @@ const Body = () => {
       </div>
       <div className="res-container">
         {listOfRestaurant.map((restaurant) => (
-          <RestaurantCard key={restaurant.info.id} resData={restaurant} />
+          <Link key={restaurant.info.id} to={"/restaurants/" + restaurant.info.id} >
+            <RestaurantCard resData={restaurant} />
+          </Link>
         ))}
       </div>
     </div>
