@@ -4,4 +4,4 @@ export const CDN_URL =
 export const LOGO_URL =
   "https://cdn.freelogovectors.net/wp-content/uploads/2023/11/swiggy_logo-freelogovectors.net_-180x135.png";
 
-export const MENU_API = "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=26.7271012&lng=88.39528609999999&restaurantId=";
+export const MENU_API = "https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.51800&lng=88.38320&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
